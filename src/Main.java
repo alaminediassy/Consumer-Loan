@@ -1,8 +1,8 @@
 
-import com.visiplus.pret_a_la_consommation.business.Client;
-import com.visiplus.pret_a_la_consommation.business.Pret;
-import com.visiplus.pret_a_la_consommation.business.PretService;
-import com.visiplus.pret_a_la_consommation.util.DateUtil;
+import com.visiplus.consumer_loan.business.Client;
+import com.visiplus.consumer_loan.business.Pret;
+import com.visiplus.consumer_loan.business.PretService;
+import com.visiplus.consumer_loan.util.DateUtil;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -14,11 +14,11 @@ public class Main {
 
         // Ajout de 5 clients
         Client[] clients = {
-                new Client("NOM0", "Prenom0"),
-                new Client("NOM1", "Prenom1"),
-                new Client("NOM2", "Prenom2"),
-                new Client("NOM3", "Prenom3"),
-                new Client("NOM4", "Prenom4")
+                new Client("DIOP", "Khady"),
+                new Client("DIASSY", "Fatima"),
+                new Client("DRAME", "Madou"),
+                new Client("MARONE", "Ibou"),
+                new Client("THIAM", "Moustapha")
         };
 
         while (true) {
@@ -77,7 +77,7 @@ public class Main {
                     // Afficher les détails du prêt
                     System.out.println("Voici les détails du prêt :");
                     System.out.println("id : " + pret.getId());
-                    System.out.println("client : " + client.getPrenom() + " " + client.getNom());
+                    System.out.println("client : " + client.getFirstname() + " " + client.getLastname());
                     System.out.println("montant emprunté : " + pret.getMontantDemande());
                     System.out.println("mensualité : " + pret.getMontantMensualite());
 

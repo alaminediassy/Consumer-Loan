@@ -1,4 +1,4 @@
-package com.visiplus.pret_a_la_consommation.util;
+package com.visiplus.consumer_loan.util;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

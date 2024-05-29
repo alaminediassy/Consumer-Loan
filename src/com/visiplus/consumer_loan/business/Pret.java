@@ -1,40 +1,40 @@
-package com.visiplus.pret_a_la_consommation.business;
+package com.visiplus.consumer_loan.business;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pret {
-    private static Long compteur = 0L;
+    private static Long counter = 0L;
 
     private Long id;
-    private double montantDemande;
-    private double montantMensualite;
-    private LocalDate dateEffet;
+    private double amountRequested;
+    private double monthlyAmount;
+    private LocalDate dateEffect;
     private Client client;
-    private List<Mensualite> mensualites;
+    private List<Mensualite> monthlyPayments;
 
     public Pret(Client client, double montantDemande, double tauxAnnuel, int dureeEnMois, LocalDate dateEffet) {
-        this.id = ++compteur;
+        this.id = ++counter;
         this.client = client;
-        this.montantDemande = montantDemande;
-        this.dateEffet = dateEffet;
-        this.mensualites = new ArrayList<>();
+        this.amountRequested = montantDemande;
+        this.dateEffect = dateEffet;
+        this.monthlyPayments = new ArrayList<>();
 
         // Calcul du taux mensuel
         double tauxMensuel = tauxAnnuel / 12;
         // Calcul de la mensualité
-        this.montantMensualite = montantDemande * tauxMensuel / (1 - Math.pow(1 + tauxMensuel, -dureeEnMois));
+        this.monthlyAmount = montantDemande * tauxMensuel / (1 - Math.pow(1 + tauxMensuel, -dureeEnMois));
 
         // Génération des mensualités
         double capitalRestant = montantDemande;
         for (int i = 0; i < dureeEnMois; i++) {
             double partInterets = capitalRestant * tauxMensuel;
-            double partCapital = montantMensualite - partInterets;
+            double partCapital = monthlyAmount - partInterets;
             capitalRestant -= partCapital;
             LocalDate datePrelevement = dateEffet.plusMonths(i);
             Mensualite mensualite = new Mensualite(datePrelevement, partInterets, partCapital);
-            this.mensualites.add(mensualite);
+            this.monthlyPayments.add(mensualite);
         }
     }
 
@@ -43,15 +43,15 @@ public class Pret {
     }
 
     public double getMontantDemande() {
-        return montantDemande;
+        return amountRequested;
     }
 
     public double getMontantMensualite() {
-        return montantMensualite;
+        return monthlyAmount;
     }
 
     public LocalDate getDateEffet() {
-        return dateEffet;
+        return dateEffect;
     }
 
     public Client getClient() {
@@ -59,6 +59,6 @@ public class Pret {
     }
 
     public List<Mensualite> getMensualites() {
-        return mensualites;
+        return monthlyPayments;
     }
 }

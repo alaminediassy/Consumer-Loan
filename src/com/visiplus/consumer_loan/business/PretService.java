@@ -1,4 +1,4 @@
-package com.visiplus.pret_a_la_consommation.business;
+package com.visiplus.consumer_loan.business;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
