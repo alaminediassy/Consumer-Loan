@@ -7,25 +7,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PretService {
-    private List<Pret> loans = new ArrayList<>();
+    private List<Loan> loans = new ArrayList<>();
 
-    public void addLoan(Pret loan) {
+    public void addLoan(Loan loan) {
         loans.add(loan);
     }
 
-    public List<Pret> getLoanByAmount() {
+    public List<Loan> getLoanByAmount() {
         return loans.stream()
-                .sorted(Comparator.comparingDouble(Pret::getMontantDemande).reversed())
+                .sorted(Comparator.comparingDouble(Loan::getMontantDemande).reversed())
                 .collect(Collectors.toList());
     }
 
-    public List<Pret> getLoanByRate() {
+    public List<Loan> getLoanByRate() {
         return loans.stream()
-                .sorted(Comparator.comparingDouble(Pret::getMontantMensualite).reversed())
+                .sorted(Comparator.comparingDouble(Loan::getMontantMensualite).reversed())
                 .collect(Collectors.toList());
     }
 
-    public List<Pret> getLoanByDateRange(LocalDate startDate, LocalDate endDate) {
+    public List<Loan> getLoanByDateRange(LocalDate startDate, LocalDate endDate) {
         return loans.stream()
                 .filter(loan -> loan.getDateEffet().isAfter(startDate) && loan.getDateEffet().isBefore(endDate))
                 .collect(Collectors.toList());

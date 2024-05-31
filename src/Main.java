@@ -1,6 +1,6 @@
 
 import com.visiplus.consumer_loan.business.Client;
-import com.visiplus.consumer_loan.business.Pret;
+import com.visiplus.consumer_loan.business.Loan;
 import com.visiplus.consumer_loan.business.PretService;
 import com.visiplus.consumer_loan.util.DateUtil;
 
@@ -71,7 +71,7 @@ public class Main {
                     LocalDate startDate = DateUtil.parseDate(startDateStr);
 
                     // Créer le prêt avec les informations saisies
-                    Pret pret = new Pret(client, amount, rate, months, startDate);
+                    Loan pret = new Loan(client, amount, rate, months, startDate);
                     pretService.addLoan(pret);
 
                     // Afficher les détails du prêt
